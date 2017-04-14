@@ -1,5 +1,9 @@
 @import "syntax-variables";
 
+* {
+  cursor: crosshair;
+}
+
 atom-text-editor, :host {
   background-color: @syntax-background-color;
   color: @syntax-text-color;
@@ -63,8 +67,9 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .comment {
-  color: @color-three;
-  background-color: @white; //fade(@white, 25%);
+  color: @white;
+  background-color: @orbit;
+  text-shadow: 0 0 2px @cyan;
 }
 
 .keyword {
@@ -73,7 +78,6 @@ atom-text-editor .search-results .marker.current-result .region,
   &.control {
     color: @syntax-text-color-dark;
   }
-
   &.operator {
     color: @syntax-text-color; // Signs like "=" and ":"
   }
@@ -128,8 +132,8 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .invalid.illegal {
-  background-color: @white;
-  color: @black;
+  color: @pink;
+  box-shadow: 2px 2px 1px @pink;
 }
 
 .string {
@@ -329,13 +333,169 @@ atom-text-editor::shadow atom-text-editor-minimap::shadow .minimap-visible-area:
     background-color: rgba(0, 0, 0, 0.0);
 }
 
+
 atom-text-editor::shadow  .bracket-matcher .region {
     border-bottom: none;
-    background-color: @color-thirteen;
+    background-color: none;
+    box-shadow: 0 0 50px 20px rgba(40,255,240,0.5);
 }
 
 // TAB COLORING
 
 .tab-bar .tab[data-type="TextEditor"]::after {
   background-color: fade(@white, 15%);
+}
+
+
+//SCROLLBARS
+::-webkit-scrollbar { //BACKGROUND OF SCROLLBAR
+    visibility: hidden;
+    width: 3px;
+}
+::-webkit-scrollbar-track {/*SCROLLBAR Track background */
+    -webkit-box-shadow: inset 0 0 6px rgba(0,255,0,0.3);
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    visibility: hidden;
+    width: 3px;
+}
+::-webkit-scrollbar-track-piece  {
+    visibility: hidden;
+    background-color: blue;
+    width: 3px;
+}
+::-webkit-scrollbar-button {  //arrows on ends
+    visibility: hidden;
+}
+::-webkit-scrollbar-thumb { //HANDLE OF SCROLLBAR
+    background-color: rgba(255,0,200,0.4) !important;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    -webkit-border-radius: 100%;
+    width: 3px;
+}
+::-webkit-scrollbar-thumb:hover, .scrollbars-visible-always /deep/ ::-webkit-scrollbar-button:hover {
+    background-color: rgba(255,0,200,0.5) !important;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background-color: rgba(155,0,100,0.4) !important;
+}
+::-webkit-scrollbar-corner { //BOTTOM RIGHT CORNER BLOCK DOES NOTHING
+    visibility: hidden;
+    overflow: hidden;
+}
+atom-text-editor .vertical-scrollbar { //NECESSARY
+    pointer-events: none;
+    width: 3px;
+}
+atom-text-editor .horizontal-scrollbar { //NECESSARY
+  visibility: hidden;
+  pointer-events: none;
+}
+::-webkit-resizer {
+  background-color: lime;
+}
+
+
+//STATUS BAR
+status-bar.status-bar {
+    line-height: 1.0rem;
+    height: 1.0rem;
+}
+
+//TAB BAR
+atom-pane-container atom-pane .tab-bar {
+    height: 1.0rem;
+    background-color: #333;
+}
+li tab.sortable {
+    line-height: 1.0rem !important;
+}
+li div .title .icon .icon-tools {
+  line-height: 1.0rem !important;
+  height: 1.0rem !important;
+}
+.tab-bar .tab .close-icon, .tab-bar .tab.modified:not(:hover) .close-icon {
+  display: none !important;
+}
+.texteditor .tab .sortable {
+  line-height: 1.0rem !important;
+}
+body > atom-workspace > atom-workspace-axis > atom-workspace-axis > atom-pane-container > atom-pane > ul > li.texteditor.tab.sortable.modified > div.title {
+  line-height: 1.0rem !important;
+}
+body >
+body > atom-workspace > atom-workspace-axis > atom-workspace-axis > atom-pane-container > atom-pane > ul > li.texteditor.tab.sortable.modified {
+  line-height: 1.0rem !important;
+  height: 1.0rem !important;
+  background-color: #aa2299 !important;
+}
+
+//MINIMAP SCROLLBAR
+atom-text-editor atom-text-editor-minimap .minimap-visible-area::after, html atom-text-editor-minimap .minimap-visible-area::after {
+    background-color: rgba(255,0,200,0.3) !important;
+    pointer-events: none;
+}
+
+//TREE VIEW
+.tree-view.list-tree *::before {
+    content: none !important;
+    visibility: hidden !important;
+}
+.tree-view.list-tree {
+    background-color: #000;
+}
+
+.tree-view-resizer {
+    border-right: 3px solid #333;
+    min-width: 15vw;
+}
+ol.entries.list-tree {
+    padding: 0 !important;
+}
+// .tree-view .project-root.directory span.name.icon.icon-file-directory {
+//     margin-left: 0 !important;
+//     text-transform: none !important;
+// }
+// .tree-view.list-tree > .project-root.directory > .header .name {
+//     margin-left: 0rem;
+//     text-transform: lowercase;
+// }
+// ol.tree-view.full-menu.list-tree.has-collapsable-children.focusable-panel  li.directory.entry.list-nested-item.project-root.expanded  div.header.list-item.project-root-header  span.name.icon.icon-file-directory {
+//     background-color: #333 !important;
+//     margin-left: 0 !important;
+//     text-transform: none !important;
+// }
+// span.name.icon.icon-file-directory {
+//   margin-left: 0 !important;
+// }
+// ol.tree-view > li.expanded > div.project-root-header > span.name {
+//   margin-left: 0 !important;
+// }
+
+//FOLDABLE FUNCTION ARROWS IN LINE NUMBERING BAR
+div.line-number.foldable {
+  color: #888;
+}
+atom-text-editor .fold-marker {
+    cursor: pointer;
+}
+atom-text-editor .fold-marker::after {
+    content: "  \25BC\25BC\25BC   ";
+    color: rgba(255,0,200,0.3);
+}
+div.icon-right::before {
+    content: "\25BC";
+    color: magenta;
+}
+//TAB BAR
+.tab-bar .tab {
+  font-size: x-small;
+  padding: 3px;
+  color: #777;
+}
+.tab-bar .tab .title {
+  font-size: 0.8em;
+  color: grey;
+  font-weight: 100;
+  padding: 0;
 }

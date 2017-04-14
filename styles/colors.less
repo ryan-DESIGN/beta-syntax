@@ -1,25 +1,41 @@
 // These colors are specific to the theme. Do not use in a package!
 
+@black: #000;
+@white: #fff;
+@subwhite:   fade(@white, 75%);
+@subwhite-1: fade(@white, 55%);
+@subwhite-2: fade(@white, 43%);
+@subwhite-3: fade(@white, 30%);
+@subwhite-4: fade(@white, 18%);
 @very-light-gray: #c5c8c6;
 @light-gray: #969896;
 @gray: #373b41;
 @dark-gray: #282a2e;
 @very-dark-gray: #1d1f21;
 
-@color-zero:      @black;              // Background
+
 @color-one:       @white;              // Main Text
-@color-two:       @subwhite;           // Second Layer Text
+@color-four:      @subwhite;              // Strings
+@color-ten:       @subwhite;              // C# Function names
+@color-eleven:    @subwhite;              // C# Class Names
+
+@color-two:       @subwhite-2;           // Second Layer Text
+@color-eight:     @subwhite-2;           // CSS Variables
+@color-twelve:    @subwhite-2;           // CSS IDs
+
+@color-thirteen:  @subwhite-3;   // Bracket match background
+
+@color-seven:     @subwhite-4;         // Selected Region Color
+
+
 @color-three:     @black;              // Comments
-@color-four:      @white;              // Strings
 @color-five:      @black;              // Errors
 @color-six:       @black;              // HTML Tags
-@color-seven:     @subwhite-2;         // Selected Region Color
-@color-eight:     @subwhite;           // CSS Variables
+@color-zero:      @black;              // Background
 @color-nine:      @black;              // C# Numbers, CSS Options
-@color-ten:       @white;              // C# Function names
-@color-eleven:    @white;              // C# Class Names
-@color-twelve:    @subwhite;           // CSS IDs
-@color-thirteen:  fade(@white, 80%);   // Bracket match background
+
+
+
 
 @lunar: #ECEFF4; //
 @graphite: rgba(93, 110, 129, 0.9); //
@@ -28,15 +44,11 @@
 @orbit: #20354F;
 @betagray: rgb(150, 150, 150);
 
-@red: #FF6D87; //
-@orange: #FF8970; //
-@yellow: #FFA924; //
-@green: #32F7C6;
-@cyan: #14C4D4; //
-@blue: #04A7D8; //
-@purple: #A79AFF; //
-@subwhite: fade(@white, 60%);
-@subwhite-2: fade(@white, 40%);
-@subwhite-3: fade(@white, 20%);
-@white: #FFFFFF;
-@black: #000000;
+@red: red; //
+@pink: rgba(255, 0, 255, 1.0);
+@orange: rgba(255, 100, 0, 1.0); //
+@yellow: rgba(255, 255, 0, 1.0); //
+@green: green;
+@cyan: rgba(0,2550,255,1.0); //
+@blue: #04A7f9; //
+@purple: rgba(155, 0, 255, 1.0); //
